@@ -8,12 +8,12 @@ constant: RECOMMENDATION_TABLE {
 }
 
 constant: BILLING_TABLE {
-  value: "detailed_billing_export.gcp_billing_export_resource_v1_01D318_0476A9_4CF367"
+  value: "billing-logs-359516.detailed_billing_export.gcp_billing_export_resource_v1_01D318_0476A9_4CF367"
   export: override_optional
 }
 
 constant: PRICING_TABLE {
-  value: "detailed_sku_prices.cloud_pricing_export"
+  value: "billing-logs-359516.detailed_sku_prices.cloud_pricing_export"
   export: override_optional
 }
 
