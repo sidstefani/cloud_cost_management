@@ -13,7 +13,7 @@
     height: 1
   - title: Current Month
     name: Current Month
-    model: gcp_billing
+    model: looker_ccm
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.total_net_cost]
@@ -84,7 +84,7 @@
     height: 2
   - title: Last Month
     name: Last Month
-    model: gcp_billing
+    model: looker_ccm
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.total_net_cost]
@@ -161,7 +161,7 @@
     height: 2
   - title: New Tile
     name: New Tile
-    model: gcp_billing
+    model: looker_ccm
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.total_cost, gcp_billing_export.category_selected,
@@ -353,7 +353,7 @@
     ui_config:
       type: dropdown_menu
       display: inline
-    model: gcp_billing
+    model: looker_ccm
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.date_selection
@@ -366,7 +366,7 @@
     ui_config:
       type: dropdown_menu
       display: inline
-    model: gcp_billing
+    model: looker_ccm
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.category
@@ -379,7 +379,7 @@
     ui_config:
       type: button_group
       display: inline
-    model: gcp_billing
+    model: looker_ccm
     explore: gcp_billing_export
     listens_to_filters: []
     field: pricing_mapping.marketplace_purchase
@@ -392,7 +392,7 @@
     ui_config:
       type: button_group
       display: inline
-    model: gcp_billing
+    model: looker_ccm
     explore: gcp_billing_export
     listens_to_filters: []
     field: eligible_labels.labeling_supported
@@ -406,7 +406,7 @@
       type: advanced
       display: popover
       options: []
-    model: gcp_billing
+    model: looker_ccm
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.usage_start_date
@@ -419,7 +419,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: looker_ccm
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.service__description
