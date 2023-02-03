@@ -1,15 +1,23 @@
 view: gcp_billing_export {
   view_label: "Billing"
   derived_table: {
-    partition_keys: ["usage_start_time"]
+    partition_keys: ["usage_start_date"] #Previous Value: Usage Start Time - the previous value creates a partition for each usage start time - very granular and will
+    # result in very expensive queries as the partition scheme is not very useful
     # cluster_keys: ["project.id"]
     datagroup_trigger: daily_datagroup
     #Sidney Stefani: Commented out in order to switch from Incremental PDT to PDT
-    #increment_key: "export_date"
-    #increment_offset: 0
-    sql: select *, generate_uuid() as pk, _PARTITIONTIME as partitiondate from @{BILLING_TABLE} ;;
+    # Eric Ferreria: Correcting increment key and offset to take advantage of incremental PDT
+    # We know that the GCP Billing Extract can alter the records of the current partition, therefore our incremental key must be based
+    # on the partitiondate, with an offset of 1 so that the build will also rebuild the previous partitioned day
+    # Documentation: https://cloud.google.com/looker/docs/incremental-pdts#example_1
+
+    increment_key: "partitiondate" # previous value: exporttime
+    increment_offset: 1 #Previous Value: 0 -- This will rebuild the previous day's partitiondate that could have altered data
+    sql: select *, generate_uuid() as pk, _PARTITIONDATE as partitiondate, DATE(usage_start_time) as usage_start_date from @{BILLING_TABLE}
+    WHERE {% incrementcondition %} _PARTITIONDATE {% endincrementcondition %} ;;
     #Sidney Stefani: Commented out in order to switch from Incremental PDT to PDT
-    #WHERE {% incrementcondition %} export_time {% endincrementcondition %}
+    # Eric: Adding increment condition on _PARTITIONDATE
+
   }
 
   dimension: pk {
@@ -365,8 +373,16 @@ view: gcp_billing_export {
       year,
       month_name
     ]
-    sql: ${TABLE}.usage_start_time ;;
+    sql: {% if usage_start_time._in_query %}
+    ${TABLE}.usage_start_time
+    {% elsif usage_start_hour._in_query %}
+    ${TABLE}.usage_start_time
+    {% elsif usage_start_raw._in_query %}
+    ${TABLE}.usage_start_time
+    {% else %} ${TABLE}.usage_start_date
+    {% endif %};;
   }
+
 
   measure: count {
     hidden: no
