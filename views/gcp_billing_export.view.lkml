@@ -1,7 +1,7 @@
 view: gcp_billing_export {
   view_label: "Billing"
   derived_table: {
-    partition_keys: ["partitiondate"]
+    partition_keys: ["partition_date"]
     #Previous Value: Usage Start Time - the previous value creates a partition for each usage start time - very granular and will
     # V3 - using Partition Date and introducing Usage Start Date as Cluster Keys
     # result in very expensive queries as the partition scheme is not very useful
@@ -13,11 +13,12 @@ view: gcp_billing_export {
     # on the partitiondate, with an offset of 1 so that the build will also rebuild the previous partitioned day
     # Documentation: https://cloud.google.com/looker/docs/incremental-pdts#example_1
 
-    increment_key: "partitiondate" # previous value: exporttime
+    increment_key: "partition_date" # previous value: exporttime
     increment_offset: 1 #Previous Value: 0 -- This will rebuild the previous day's partitiondate that could have altered data
-    sql: SELECT *
+    sql: SELECT
+        *
       , generate_uuid() as pk
-      , _PARTITIONDATE as partitiondate
+      , _PARTITIONTIME as partition_date
       , DATE(usage_start_time) as usage_start_date
       FROM `@{BILLING_TABLE}`
       WHERE {% incrementcondition %} _PARTITIONDATE {% endincrementcondition %} ;;
@@ -26,10 +27,18 @@ view: gcp_billing_export {
 
   }
 
-  dimension: partitiondate {
-    hidden: yes
-    type: date
-    sql: ${TABLE}.partitiondate ;;
+  dimension_group: partition {
+    type: time
+    timeframes: [
+      raw
+      , time
+      , date
+      , month
+      , year
+    ]
+    # hidden: yes
+    datatype: date
+    sql: ${TABLE}.partition_date ;;
   }
 
   dimension: pk {
