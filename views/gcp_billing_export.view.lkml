@@ -13,17 +13,23 @@ view: gcp_billing_export {
     # on the partitiondate, with an offset of 1 so that the build will also rebuild the previous partitioned day
     # Documentation: https://cloud.google.com/looker/docs/incremental-pdts#example_1
 
-    # increment_key: "partitiondate" # previous value: exporttime
-    # increment_offset: 1 #Previous Value: 0 -- This will rebuild the previous day's partitiondate that could have altered data
+    increment_key: "partitiondate" # previous value: exporttime
+    increment_offset: 1 #Previous Value: 0 -- This will rebuild the previous day's partitiondate that could have altered data
     sql: SELECT *
       , generate_uuid() as pk
       , _PARTITIONDATE as partitiondate
       , DATE(usage_start_time) as usage_start_date
-      FROM `@{BILLING_TABLE}`;;
-      # WHERE {% incrementcondition %} _PARTITIONDATE {% endincrementcondition %} ;;
+      FROM `@{BILLING_TABLE}`
+      WHERE {% incrementcondition %} _PARTITIONDATE {% endincrementcondition %} ;;
     #Sidney Stefani: Commented out in order to switch from Incremental PDT to PDT
     # Eric: Adding increment condition on _PARTITIONDATE
 
+  }
+
+  dimension: partitiondate {
+    hidden: yes
+    type: date
+    sql: ${TABLE}.partitiondate ;;
   }
 
   dimension: pk {
@@ -157,6 +163,7 @@ view: gcp_billing_export {
       quarter,
       year
     ]
+    # date,
     sql: ${TABLE}.export_time ;;
   }
 
