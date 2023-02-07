@@ -1,15 +1,44 @@
 view: gcp_billing_export {
   view_label: "Billing"
   derived_table: {
-    partition_keys: ["usage_start_time"]
-    # cluster_keys: ["project.id"]
+    partition_keys: ["partition_date"]
+    #Previous Value: Usage Start Time - the previous value creates a partition for each usage start time - very granular and will
+    # V3 - using Partition Date and introducing Usage Start Date as Cluster Keys
+    # result in very expensive queries as the partition scheme is not very useful
+    cluster_keys: ["usage_start_date"]
     datagroup_trigger: daily_datagroup
     #Sidney Stefani: Commented out in order to switch from Incremental PDT to PDT
-    #increment_key: "export_date"
-    #increment_offset: 0
-    sql: select *, generate_uuid() as pk, _PARTITIONTIME as partitiondate from @{BILLING_TABLE} ;;
+    # Eric Ferreria: Correcting increment key and offset to take advantage of incremental PDT
+    # We know that the GCP Billing Extract can alter the records of the current partition, therefore our incremental key must be based
+    # on the partitiondate, with an offset of 1 so that the build will also rebuild the previous partitioned day
+    # Documentation: https://cloud.google.com/looker/docs/incremental-pdts#example_1
+
+    increment_key: "partition_date" # previous value: exporttime
+    increment_offset: 1 #Previous Value: 0 -- This will rebuild the previous day's partitiondate that could have altered data
+    sql: SELECT
+        *
+      , generate_uuid() as pk
+      , _PARTITIONTIME as partition_date
+      , DATE(usage_start_time) as usage_start_date
+      FROM `@{BILLING_TABLE}`
+      WHERE {% incrementcondition %} _PARTITIONDATE {% endincrementcondition %} ;;
     #Sidney Stefani: Commented out in order to switch from Incremental PDT to PDT
-    #WHERE {% incrementcondition %} export_time {% endincrementcondition %}
+    # Eric: Adding increment condition on _PARTITIONDATE
+
+  }
+
+  dimension_group: partition {
+    type: time
+    timeframes: [
+      raw
+      , time
+      , date
+      , month
+      , year
+    ]
+    # hidden: yes
+    datatype: date
+    sql: ${TABLE}.partition_date ;;
   }
 
   dimension: pk {
@@ -143,6 +172,7 @@ view: gcp_billing_export {
       quarter,
       year
     ]
+    # date,
     sql: ${TABLE}.export_time ;;
   }
 
@@ -356,17 +386,23 @@ view: gcp_billing_export {
     type: time
     timeframes: [
       raw,
-      time,
       date,
-      hour,
       week,
       month,
       quarter,
       year,
       month_name
     ]
+    datatype: date
+    sql:  ${TABLE}.usage_start_date
+    ;;
+  }
+
+  dimension: usage_start_time {
+    group_label: "Usage Start Date"
     sql: ${TABLE}.usage_start_time ;;
   }
+
 
   measure: count {
     hidden: no
@@ -409,10 +445,30 @@ view: gcp_billing_export {
     #Sidney Stefani - updating drill fields
     measure: total_net_cost {
       type: number
-      sql: ${total_cost} - ${gcp_billing_export__credits.total_amount};;
+      # sql: ${total_cost} - ${gcp_billing_export__credits.total_amount};;
+      sql: ${total_cost} - ${total_credit_amount} ;;
       value_format: "#,##0.00"
       html: <a href="#drillmenu" target="_self">{{ currency_symbol._value }}{{ rendered_value }}</a>;;
       drill_fields: [total_cost, gcp_billing_export__credits.total_amount]
+    }
+
+  measure: total_net_cost_old {
+    type: number
+    sql: ${total_cost} - ${gcp_billing_export__credits.total_amount};;
+    # sql: ${total_cost} - ${total_credit_amount} ;;
+    value_format: "#,##0.00"
+    html: <a href="#drillmenu" target="_self">{{ currency_symbol._value }}{{ rendered_value }}</a>;;
+    drill_fields: [total_cost, gcp_billing_export__credits.total_amount]
+  }
+
+    measure: total_credit_amount {
+      type: sum
+      sql: ${credit_amount} ;;
+    }
+
+    dimension: credit_amount {
+      type: number
+      sql: ( SELECT SUM(-gcp_billing_export__credits.amount) FROM UNNEST(gcp_billing_export.credits) as gcp_billing_export__credits  ) ;;
     }
 
 ####### PROJECT LABELS ########

@@ -2,6 +2,8 @@ connection: "looker-private-demo"
 include: "/views/*.view.lkml"                # include all views in the views/ folder in this project
 label: "Google Cloud Billing"
 include: "/datagroups/datagroups.lkml"
+include: "/dashboards/original_dashboards/gcp_cost_summary.dashboard"
+
 persist_with: daily_datagroup
 
 
