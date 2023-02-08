@@ -4,6 +4,9 @@ label: "Google Cloud Billing"
 include: "/datagroups/datagroups.lkml"
 include: "/dashboards/original_dashboards/gcp_cost_summary.dashboard"
 include: "/dashboards/cost_history.dashboard.lookml"
+include: "/dashboards/cud_resource.dashboard.lookml"
+include: "/dashboards/cud_spend.dashboard.lookml"
+include: "/dashboards/cost_allocation.dashboard.lookml"
 
 persist_with: daily_datagroup
 

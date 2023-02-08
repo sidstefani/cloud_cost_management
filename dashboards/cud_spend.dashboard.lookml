@@ -13,7 +13,6 @@
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.usage__amount_in_calculated_units]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: Kubernetes Engine
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -58,7 +57,6 @@
     y_axes: []
     series_types: {}
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Project ID: gcp_billing_export.project__id
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 3
@@ -73,7 +71,6 @@
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.usage__amount_in_calculated_units]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: Cloud SQL
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -118,7 +115,6 @@
     y_axes: []
     series_types: {}
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Project ID: gcp_billing_export.project__id
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 12
@@ -149,7 +145,6 @@
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.usage__amount_in_calculated_units]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: Cloud Run
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -195,7 +190,6 @@
     series_types: {}
     title_hidden: true
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Project ID: gcp_billing_export.project__id
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 21
@@ -228,7 +222,6 @@
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.usage__amount_in_calculated_units]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: VMware Engine
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -274,7 +267,7 @@
     series_types: {}
     title_hidden: true
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
+
       Project ID: gcp_billing_export.project__id
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 30
@@ -299,7 +292,6 @@
       gcp_billing_export.usage_start_month]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: Kubernetes Engine%
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -356,7 +348,7 @@
     defaults_version: 1
     hidden_fields: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
+
       Project ID: gcp_billing_export.project__id
       Machine Type: gcp_billing_export.machine_type
       Usage Start Date: gcp_billing_export.usage_start_date
@@ -372,7 +364,6 @@
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.cud_coverage]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: Kubernetes Engine%
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -429,7 +420,7 @@
     defaults_version: 1
     hidden_fields: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
+
       Project ID: gcp_billing_export.project__id
       Machine Type: gcp_billing_export.machine_type
       Usage Start Date: gcp_billing_export.usage_start_date
@@ -446,7 +437,6 @@
       gcp_billing_export.usage_start_month]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: VMware Engine%
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -502,7 +492,7 @@
     defaults_version: 1
     hidden_fields: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
+
       Project ID: gcp_billing_export.project__id
       Machine Type: gcp_billing_export.machine_type
       Usage Start Date: gcp_billing_export.usage_start_date
@@ -519,7 +509,6 @@
       gcp_billing_export.usage_start_month]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: Cloud Run%
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -575,7 +564,7 @@
     defaults_version: 1
     hidden_fields: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
+
       Project ID: gcp_billing_export.project__id
       Machine Type: gcp_billing_export.machine_type
       Usage Start Date: gcp_billing_export.usage_start_date
@@ -592,7 +581,6 @@
       gcp_billing_export.usage_start_month]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: Cloud SQL%
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -648,7 +636,7 @@
     defaults_version: 1
     hidden_fields: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
+
       Project ID: gcp_billing_export.project__id
       Machine Type: gcp_billing_export.machine_type
       Usage Start Date: gcp_billing_export.usage_start_date
@@ -664,7 +652,6 @@
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.cud_coverage]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: VMware Engine%
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -720,7 +707,7 @@
     defaults_version: 1
     hidden_fields: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
+
       Project ID: gcp_billing_export.project__id
       Machine Type: gcp_billing_export.machine_type
       Usage Start Date: gcp_billing_export.usage_start_date
@@ -736,7 +723,6 @@
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.cud_coverage]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: Cloud Run%
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -792,7 +778,7 @@
     defaults_version: 1
     hidden_fields: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
+
       Project ID: gcp_billing_export.project__id
       Machine Type: gcp_billing_export.machine_type
       Usage Start Date: gcp_billing_export.usage_start_date
@@ -808,7 +794,6 @@
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.cud_coverage]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
-      applications.name: ''
       gcp_billing_export.service__description: Cloud SQL%
       pricing.pricing_category: ''
       pricing.pricing_type: ''
@@ -864,7 +849,7 @@
     defaults_version: 1
     hidden_fields: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
+
       Project ID: gcp_billing_export.project__id
       Machine Type: gcp_billing_export.machine_type
       Usage Start Date: gcp_billing_export.usage_start_date
@@ -887,33 +872,6 @@
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.usage_start_date
-  - name: App ID (Resource)
-    title: App ID (Resource)
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: advanced
-      display: popover
-      options: []
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.app_id_with_unallocated
-  - name: Application Name
-    title: Application Name
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: applications.name
   - name: Project ID
     title: Project ID
     type: field_filter
