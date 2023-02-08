@@ -1,4 +1,5 @@
 include: "/views/*.view.lkml"
+include: "/views/gcp_billing_export.view.lkml"
 
 view: +gcp_billing_export {
 ##################### Category Reporting Metrics #####################

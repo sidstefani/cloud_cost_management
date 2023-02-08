@@ -13,7 +13,7 @@
     height: 1
   - title: Current Month
     name: Current Month
-    model: looker_ccm
+    model: gcp_billing
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.total_net_cost]
@@ -75,7 +75,6 @@
     y_axes: []
     listen:
       Service Type: gcp_billing_export.service__description
-      Is Labeling Supported? (Yes / No): eligible_labels.labeling_supported
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
       Category: gcp_billing_export.category
     row: 1
@@ -84,7 +83,7 @@
     height: 2
   - title: Last Month
     name: Last Month
-    model: looker_ccm
+    model: gcp_billing
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.total_net_cost]
@@ -152,7 +151,6 @@
     y_axes: []
     listen:
       Service Type: gcp_billing_export.service__description
-      Is Labeling Supported? (Yes / No): eligible_labels.labeling_supported
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
       Category: gcp_billing_export.category
     row: 1
@@ -161,7 +159,7 @@
     height: 2
   - title: New Tile
     name: New Tile
-    model: looker_ccm
+    model: gcp_billing
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.total_cost, gcp_billing_export.category_selected,
@@ -335,7 +333,6 @@
     title_hidden: true
     listen:
       Service Type: gcp_billing_export.service__description
-      Is Labeling Supported? (Yes / No): eligible_labels.labeling_supported
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
       Category: gcp_billing_export.category
       Date Selection: gcp_billing_export.date_selection
@@ -353,7 +350,7 @@
     ui_config:
       type: dropdown_menu
       display: inline
-    model: looker_ccm
+    model: gcp_billing
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.date_selection
@@ -366,7 +363,7 @@
     ui_config:
       type: dropdown_menu
       display: inline
-    model: looker_ccm
+    model: gcp_billing
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.category
@@ -379,23 +376,10 @@
     ui_config:
       type: button_group
       display: inline
-    model: looker_ccm
+    model: gcp_billing
     explore: gcp_billing_export
     listens_to_filters: []
     field: pricing_mapping.marketplace_purchase
-  - name: Is Labeling Supported? (Yes / No)
-    title: Is Labeling Supported? (Yes / No)
-    type: field_filter
-    default_value: No,Yes
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: button_group
-      display: inline
-    model: looker_ccm
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: eligible_labels.labeling_supported
   - name: Usage Start Date
     title: Usage Start Date
     type: field_filter
@@ -406,7 +390,7 @@
       type: advanced
       display: popover
       options: []
-    model: looker_ccm
+    model: gcp_billing
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.usage_start_date
@@ -419,7 +403,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: looker_ccm
+    model: gcp_billing
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.service__description

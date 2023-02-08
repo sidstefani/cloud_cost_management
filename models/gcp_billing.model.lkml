@@ -3,6 +3,7 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 label: "Google Cloud Billing"
 include: "/datagroups/datagroups.lkml"
 include: "/dashboards/original_dashboards/gcp_cost_summary.dashboard"
+include: "/dashboards/cost_history.dashboard.lookml"
 
 persist_with: daily_datagroup
 
