@@ -3,14 +3,14 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
+  preferred_slug: CgCEUrwhU9VLopZJvLrtab
   elements:
-  - title: Cost Allocation by Resource App ID
-    name: Cost Allocation by Resource App ID
+  - title: Cost Allocation by [Label]
+    name: Cost Allocation by [Label]
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_grid
-    fields: [gcp_billing_export.project__id, gcp_billing_export.total_cost,
-      gcp_billing_export.total_net_cost]
+    fields: [gcp_billing_export.project__id, gcp_billing_export.total_cost, gcp_billing_export__credits.total_amount]
     sorts: [gcp_billing_export.total_cost desc]
     limit: 500
     show_view_names: false
@@ -37,21 +37,25 @@
         is_active: true
       gcp_billing_export.total_net_cost:
         is_active: true
+      gcp_billing_export__credits.total_amount:
+        is_active: true
     defaults_version: 1
     hidden_fields: []
     y_axes: []
+    hidden_pivots: {}
     listen:
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 1
     col: 0
     width: 24
     height: 6
-  - title: Cost by App Name
-    name: Cost by App Name
+  - title: Cost by [Label]
+    name: Cost by [Label]
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_grid
-    fields: [gcp_billing_export.total_cost, gcp_billing_export.total_net_cost]
+    fields: [gcp_billing_export.total_cost, gcp_billing_export__credits.total_amount,
+      gcp_billing_export.project__id]
     sorts: [gcp_billing_export.total_cost desc 0]
     limit: 500
     show_view_names: false
@@ -78,21 +82,24 @@
         is_active: true
       gcp_billing_export.total_net_cost:
         is_active: true
+      gcp_billing_export__credits.total_amount:
+        is_active: true
     defaults_version: 1
     hidden_fields: []
     y_axes: []
+    hidden_pivots: {}
     listen:
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 15
     col: 16
     width: 8
     height: 4
-  - title: Cost by Department Name
-    name: Cost by Department Name
+  - title: Cost by [Label]
+    name: Cost by [Label] (2)
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_grid
-    fields: [gcp_billing_export.total_cost, gcp_billing_export.total_net_cost, gcp_billing_export.project__id]
+    fields: [gcp_billing_export.total_cost, gcp_billing_export.project__id, gcp_billing_export__credits.total_amount]
     filters:
       gcp_billing_export.total_cost: ">0"
     sorts: [gcp_billing_export.total_cost desc 0]
@@ -121,22 +128,24 @@
         is_active: true
       gcp_billing_export.total_net_cost:
         is_active: true
+      gcp_billing_export__credits.total_amount:
+        is_active: true
     defaults_version: 1
     hidden_fields: []
     y_axes: []
+    hidden_pivots: {}
     listen:
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 11
     col: 16
     width: 8
     height: 4
-  - title: Cost by Originator
-    name: Cost by Originator
+  - title: Cost by [Label]
+    name: Cost by [Label] (3)
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_grid
-    fields: [gcp_billing_export.total_cost, gcp_billing_export.total_net_cost, gcp_billing_export.project__id]
-    filters:
+    fields: [gcp_billing_export.total_cost, gcp_billing_export.project__id, gcp_billing_export__credits.total_amount]
     sorts: [gcp_billing_export.total_cost desc 0]
     limit: 500
     show_view_names: false
@@ -163,24 +172,20 @@
         is_active: true
       gcp_billing_export.total_net_cost:
         is_active: true
+      gcp_billing_export__credits.total_amount:
+        is_active: true
     defaults_version: 1
     hidden_fields: []
     y_axes: []
+    hidden_pivots: {}
     listen:
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 7
     col: 16
     width: 8
     height: 4
-  - type: button
-    name: button_508
-    rich_content_json: '{"text":"Unallocated Resource App ID","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cmebilling.cloud.looker.com/dashboards/34?Usage%20Start%20Date=3%20months%20ago%20for%203%20months&App%20ID%20Test=Unallocated%20App%20ID"}'
-    row: 0
-    col: 0
-    width: 4
-    height: 1
-  - title: Trending Resource App ID Costs
-    name: Trending Resource App ID Costs
+  - title: Trending [Label] Costs
+    name: Trending [Label] Costs
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_line
@@ -248,8 +253,8 @@
     col: 0
     width: 16
     height: 12
-  - title: 'Trending PMGT ID Costs '
-    name: 'Trending PMGT ID Costs '
+  - title: 'Trending [Label] Costs '
+    name: 'Trending [Label] Costs '
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_line
@@ -316,7 +321,7 @@
     width: 24
     height: 12
   - type: button
-    name: button_679
+    name: button_347
     rich_content_json: '{"text":"User Guide","description":"User Guide","newTab":true,"alignment":"right","size":"small","style":"FILLED","color":"#5A6874","href":"https://docs.google.com/document/d/1LqB3XHoCSCkIqIm4qyMLmCMetl3bSzTHZZTJC3Nuv1Y/edit?usp=share_link"}'
     row: 0
     col: 4
