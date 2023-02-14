@@ -7,6 +7,8 @@ include: "/dashboards/cost_history.dashboard.lookml"
 include: "/dashboards/cud_resource.dashboard.lookml"
 include: "/dashboards/cud_spend.dashboard.lookml"
 include: "/dashboards/cost_allocation.dashboard.lookml"
+include: "/dashboards/original_dashboards/*.dashboard.lookml"
+
 
 persist_with: daily_datagroup
 
