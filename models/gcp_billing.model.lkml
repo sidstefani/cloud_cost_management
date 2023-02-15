@@ -8,6 +8,10 @@ include: "/dashboards/cud_resource.dashboard.lookml"
 include: "/dashboards/cud_spend.dashboard.lookml"
 include: "/dashboards/cost_allocation.dashboard.lookml"
 include: "/dashboards/original_dashboards/*.dashboard.lookml"
+include: "/dashboards/big_query_cost_insights.dashboard.lookml"
+include: "/dashboards/cloud_storage_insights.dashboard.lookml"
+include: "/dashboards/compute_engine_insights.dashboard.lookml"
+
 
 
 persist_with: daily_datagroup

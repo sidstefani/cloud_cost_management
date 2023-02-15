@@ -1,4 +1,4 @@
-- dashboard: bigquery_insights
+- dashboard: bigquery_insights_cost_insights
   title: BigQuery Insights
   layout: newspaper
   preferred_viewer: dashboards-next
@@ -121,8 +121,6 @@
     title_hidden: true
     listen:
       GCP Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 7
     col: 0
@@ -190,8 +188,6 @@
     title_hidden: true
     listen:
       GCP Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 27
     col: 0
@@ -254,8 +250,6 @@
     title_hidden: true
     listen:
       GCP Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 17
     col: 0
@@ -334,8 +328,6 @@
     title_hidden: true
     listen:
       GCP Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 7
     col: 12
@@ -402,8 +394,6 @@
     title_hidden: true
     listen:
       GCP Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 17
     col: 12
@@ -470,8 +460,6 @@
     title_hidden: true
     listen:
       GCP Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 27
     col: 12
@@ -562,8 +550,6 @@
     title_hidden: true
     listen:
       GCP Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
     row: 36
     col: 0
     width: 24
@@ -589,32 +575,6 @@
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.project__id
-  - name: App ID (Resource)
-    title: App ID (Resource)
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.app_id_with_unallocated
-  - name: Application Name
-    title: Application Name
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: applications.name
   - name: Usage Start Date
     title: Usage Start Date
     type: field_filter

@@ -3,7 +3,6 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: ngerpXAmr1grfgoqi4LcPp
   elements:
   - title: BigQuery by Day
     name: BigQuery by Day
