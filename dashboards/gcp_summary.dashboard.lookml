@@ -71,8 +71,6 @@
     y_axes: []
     hidden_pivots: {}
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 1
@@ -145,8 +143,6 @@
     y_axes: []
     hidden_pivots: {}
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 7
@@ -219,8 +215,6 @@
     y_axes: []
     hidden_pivots: {}
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 5
@@ -293,8 +287,6 @@
     y_axes: []
     hidden_pivots: {}
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 3
@@ -374,8 +366,6 @@
     interpolation: linear
     hidden_fields: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 14
@@ -435,8 +425,6 @@
     hidden_fields: [gcp_billing_export.total_cost]
     y_axes: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 25
@@ -504,8 +492,6 @@
     defaults_version: 1
     hidden_fields: []
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 1
@@ -548,8 +534,6 @@
     series_types: {}
     defaults_version: 1
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 39
@@ -582,8 +566,6 @@
     series_types: {}
     defaults_version: 1
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 33
@@ -617,8 +599,6 @@
     series_types: {}
     defaults_version: 1
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 33
@@ -692,8 +672,6 @@
     interpolation: linear
     hidden_fields: [gcp_billing_export.total_cost]
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 11
@@ -764,8 +742,6 @@
     hidden_fields: []
     hidden_pivots: {}
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 11
@@ -845,8 +821,6 @@
     hidden_fields: [4_week_moving_average]
     hidden_pivots: {}
     listen:
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Service Type: gcp_billing_export.service__description
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
     row: 18
@@ -854,32 +828,6 @@
     width: 17
     height: 5
   filters:
-  - name: App ID (Resource)
-    title: App ID (Resource)
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.app_id_with_unallocated
-  - name: Application Name
-    title: Application Name
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: applications.name
   - name: Service Type
     title: Service Type
     type: field_filter

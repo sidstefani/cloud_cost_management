@@ -3,7 +3,6 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: ny73EquEeIgQI14jE3MuyP
   elements:
   - title: Invoice Net Cost and Credit Amount
     name: Invoice Net Cost and Credit Amount
@@ -56,12 +55,8 @@
       Usage Start Date: gcp_billing_export.usage_start_date
       Service Name: billing_lookup.service_name
       Project Name: gcp_billing_export.project__name
-      Environment: gcp_billing_export.environment
       Location Region: gcp_billing_export.location__region
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
-      Project ID (PMGT - new): gcp_billing_export.cme_project_id
     row: 1
     col: 6
     width: 18
@@ -133,12 +128,8 @@
     listen:
       Service Name: billing_lookup.service_name
       Project Name: gcp_billing_export.project__name
-      Environment: gcp_billing_export.environment
       Location Region: gcp_billing_export.location__region
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
-      Project ID (PMGT - new): gcp_billing_export.cme_project_id
     row: 1
     col: 0
     width: 6
@@ -210,12 +201,8 @@
     listen:
       Service Name: billing_lookup.service_name
       Project Name: gcp_billing_export.project__name
-      Environment: gcp_billing_export.environment
       Location Region: gcp_billing_export.location__region
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
-      Project ID (PMGT - new): gcp_billing_export.cme_project_id
     row: 3
     col: 0
     width: 6
@@ -287,12 +274,8 @@
     listen:
       Service Name: billing_lookup.service_name
       Project Name: gcp_billing_export.project__name
-      Environment: gcp_billing_export.environment
       Location Region: gcp_billing_export.location__region
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
-      Project ID (PMGT - new): gcp_billing_export.cme_project_id
     row: 5
     col: 0
     width: 6
@@ -364,12 +347,8 @@
     listen:
       Service Name: billing_lookup.service_name
       Project Name: gcp_billing_export.project__name
-      Environment: gcp_billing_export.environment
       Location Region: gcp_billing_export.location__region
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
-      Project ID (PMGT - new): gcp_billing_export.cme_project_id
     row: 7
     col: 0
     width: 6
@@ -391,12 +370,8 @@
       Usage Start Date: gcp_billing_export.usage_start_date
       Service Name: billing_lookup.service_name
       Project Name: gcp_billing_export.project__name
-      Environment: gcp_billing_export.environment
       Location Region: gcp_billing_export.location__region
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
-      Project ID (PMGT - new): gcp_billing_export.cme_project_id
     row: 21
     col: 0
     width: 8
@@ -569,12 +544,8 @@
     listen:
       Service Name: billing_lookup.service_name
       Project Name: gcp_billing_export.project__name
-      Environment: gcp_billing_export.environment
       Location Region: gcp_billing_export.location__region
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
-      Project ID (PMGT - new): gcp_billing_export.cme_project_id
     row: 15
     col: 0
     width: 8
@@ -635,12 +606,8 @@
       Usage Start Date: gcp_billing_export.usage_start_date
       Service Name: billing_lookup.service_name
       Project Name: gcp_billing_export.project__name
-      Environment: gcp_billing_export.environment
       Location Region: gcp_billing_export.location__region
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
-      Project ID (PMGT - new): gcp_billing_export.cme_project_id
     row: 9
     col: 8
     width: 16
@@ -724,12 +691,8 @@
       Usage Start Date: gcp_billing_export.usage_start_date
       Service Name: billing_lookup.service_name
       Project Name: gcp_billing_export.project__name
-      Environment: gcp_billing_export.environment
       Location Region: gcp_billing_export.location__region
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
-      Project ID (PMGT - new): gcp_billing_export.cme_project_id
     row: 9
     col: 0
     width: 8
@@ -809,9 +772,6 @@
     defaults_version: 1
     hidden_fields: [spend.total_forecast, gcp_billing_export.total_net_cost]
     listen:
-      Environment: gcp_billing_export.environment
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Project ID (PMGT - new): gcp_billing_export.cme_project_id
     row: 17
     col: 8
     width: 16
@@ -831,32 +791,6 @@
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.usage_start_date
-  - name: App ID (Resource)
-    title: App ID (Resource)
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.app_id_with_unallocated
-  - name: Application Name
-    title: Application Name
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: applications.name
   - name: Service Name
     title: Service Name
     type: field_filter
@@ -883,19 +817,6 @@
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.project__name
-  - name: Environment
-    title: Environment
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.environment
   - name: Location Region
     title: Location Region
     type: field_filter
@@ -909,20 +830,6 @@
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.location__region
-  - name: Project ID (PMGT - new)
-    title: Project ID (PMGT - new)
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: advanced
-      display: popover
-      options: []
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.cme_project_id
   - name: Is Marketplace Purchase? (Yes / No)
     title: Is Marketplace Purchase? (Yes / No)
     type: field_filter

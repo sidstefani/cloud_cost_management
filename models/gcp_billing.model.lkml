@@ -11,6 +11,11 @@ include: "/dashboards/original_dashboards/*.dashboard.lookml"
 include: "/dashboards/big_query_cost_insights.dashboard.lookml"
 include: "/dashboards/cloud_storage_insights.dashboard.lookml"
 include: "/dashboards/compute_engine_insights.dashboard.lookml"
+include: "/dashboards/original_dashboards/credit_summary.dashboard.lookml"
+include: "/dashboards/credit_analysis.dashboard.lookml"
+include: "/dashboards/gcp_summary.dashboard.lookml"
+include: "/dashboards/original_dashboards/project_deepdive.dashboard.lookml"
+include: "/dashboards/gcp_usage_deep_dive.dashboard.lookml"
 
 
 
