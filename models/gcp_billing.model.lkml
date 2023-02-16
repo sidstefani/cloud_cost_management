@@ -16,6 +16,7 @@ include: "/dashboards/credit_analysis.dashboard.lookml"
 include: "/dashboards/gcp_summary.dashboard.lookml"
 include: "/dashboards/original_dashboards/project_deepdive.dashboard.lookml"
 include: "/dashboards/gcp_usage_deep_dive.dashboard.lookml"
+include: "/dashboards/vmware_insights.dashboard.lookml"
 
 
 
