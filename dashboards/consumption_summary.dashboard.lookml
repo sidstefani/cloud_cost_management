@@ -174,15 +174,12 @@
     hidden_fields: [gcp_billing_export.usage__amount_in_calculated_units]
     y_axes: []
     listen:
-      Environment: gcp_billing_export.environment
       Project Name: gcp_billing_export.project__name
       Location Region: gcp_billing_export.location__region
       Service Type: gcp_billing_export.service__description
       Department Name: gcp_billing_export.department_name
       Project ID (PMGT): gcp_billing_export.project_id
       Is Marketplace Purchase? (Yes / No): pricing_mapping.marketplace_purchase
-      Resource App ID: gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
     row: 7
     col: 0
     width: 24
@@ -340,46 +337,6 @@
     width: 24
     height: 1
   filters:
-  - name: Resource App ID
-    title: Resource App ID
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.app_id_with_unallocated
-  - name: Application Name
-    title: Application Name
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: applications.name
-  - name: Environment
-    title: Environment
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: advanced
-      display: popover
-      options: []
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.environment
   - name: Service Type
     title: Service Type
     type: field_filter

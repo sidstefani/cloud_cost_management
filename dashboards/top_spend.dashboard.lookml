@@ -67,8 +67,6 @@
     y_axes: []
     listen:
       Service Type: gcp_billing_export.service__description
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 1
     col: 0
@@ -134,8 +132,6 @@
     y_axes: []
     listen:
       Service Type: gcp_billing_export.service__description
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 8
     col: 0
@@ -200,8 +196,6 @@
     y_axes: []
     listen:
       Service Type: gcp_billing_export.service__description
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 15
     col: 0
@@ -289,8 +283,6 @@
     note_text: Usage Start Date does not filter this Visualization
     listen:
       Service Type: gcp_billing_export.service__description
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
     row: 28
     col: 0
     width: 24
@@ -376,8 +368,6 @@
     note_text: Usage Start Date does not filter this Visualization
     listen:
       Service Type: gcp_billing_export.service__description
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
     row: 21
     col: 0
     width: 24
@@ -444,8 +434,6 @@
     y_axes: []
     listen:
       Service Type: gcp_billing_export.service__description
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 10
     col: 7
@@ -520,8 +508,6 @@
       data is not finalized.'
     listen:
       Service Type: gcp_billing_export.service__description
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 1
     col: 7
@@ -576,29 +562,3 @@
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.service__description
-  - name: Application Name
-    title: Application Name
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: applications.name
-  - name: App ID (Resource)
-    title: App ID (Resource)
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.app_id_with_unallocated

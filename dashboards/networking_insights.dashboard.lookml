@@ -107,8 +107,6 @@
     y_axes: []
     listen:
       Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
     row: 19
     col: 0
     width: 24
@@ -182,8 +180,6 @@
       data is not finalized.'
     listen:
       Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
     row: 27
     col: 0
     width: 24
@@ -280,8 +276,6 @@
     hidden_fields: []
     listen:
       Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 4
     col: 12
@@ -379,8 +373,6 @@
     hidden_fields: []
     listen:
       Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 4
     col: 0
@@ -401,7 +393,7 @@
     explore: gcp_billing_export
     type: looker_grid
     fields: [networking_group, gcp_billing_export.project__name, gcp_billing_export.total_cost,
-      gcp_billing_export.total_net_cost, gcp_billing_export.app_id_with_unallocated]
+      gcp_billing_export.total_net_cost]
     filters:
       gcp_billing_export.service__description: Networking%
       gcp_billing_export.usage_start_month: 4 months ago for 4 months
@@ -496,8 +488,6 @@
     y_axes: []
     listen:
       Project ID: gcp_billing_export.project__id
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
-      Application Name: applications.name
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 11
     col: 0
@@ -525,32 +515,6 @@
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.project__id
-  - name: App ID (Resource)
-    title: App ID (Resource)
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.app_id_with_unallocated
-  - name: Application Name
-    title: Application Name
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: applications.name
   - name: Usage Start Date
     title: Usage Start Date
     type: field_filter
