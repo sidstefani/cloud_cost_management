@@ -3,7 +3,6 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: qjS52CkHstvl831aw9TzEX
   elements:
   - name: <strong><font color="#000000 " size="6" weight="bold">GCVE (VMware) Insights</font><strong>
     type: text
