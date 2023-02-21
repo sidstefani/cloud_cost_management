@@ -10,9 +10,8 @@
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_bar
-    fields: [gcp_billing_export.total_cost, billing_lookup.service_name]
+    fields: [gcp_billing_export.total_cost]
     filters:
-      billing_lookup.service_name: "-NULL"
     sorts: [gcp_billing_export.total_cost desc]
     limit: 10
     dynamic_fields: [{_kind_hint: measure, table_calculation: total_cost, _type_hint: number,
@@ -443,12 +442,10 @@
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_column
-    fields: [gcp_billing_export.total_cost, billing_lookup.service_name, gcp_billing_export.usage_start_date]
-    pivots: [billing_lookup.service_name]
+    fields: [gcp_billing_export.total_cost, gcp_billing_export.usage_start_date]
     fill_fields: [gcp_billing_export.usage_start_date]
     filters:
-      billing_lookup.service_name: "-NULL"
-    sorts: [billing_lookup.service_name, gcp_billing_export.total_cost desc 0]
+    sorts: [ gcp_billing_export.total_cost desc 0]
     limit: 100
     dynamic_fields: [{_kind_hint: measure, table_calculation: total_cost, _type_hint: number,
         category: table_calculation, expression: "${gcp_billing_export.total_cost}+0",

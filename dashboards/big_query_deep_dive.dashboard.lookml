@@ -212,14 +212,13 @@
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_column
-    fields: [gcp_billing_export.usage_start_month, billing_lookup.category_resource_group,
+    fields: [gcp_billing_export.usage_start_month,
       gcp_billing_export.total_net_cost]
-    pivots: [billing_lookup.category_resource_group]
     fill_fields: [gcp_billing_export.usage_start_month]
     filters:
       gcp_billing_export.service__description: "%BigQuery%"
       gcp_billing_export.usage_start_month: after 2022/01/01
-    sorts: [billing_lookup.category_resource_group, gcp_billing_export.usage_start_month
+    sorts: [gcp_billing_export.usage_start_month
         desc]
     limit: 50
     x_axis_gridlines: false
@@ -322,16 +321,13 @@
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_column
-    fields: [gcp_billing_export.usage_start_date, gcp_billing_export.total_usage_amount,
-      billing_lookup.category_resource_group]
-    pivots: [billing_lookup.category_resource_group]
+    fields: [gcp_billing_export.usage_start_date, gcp_billing_export.total_usage_amount]
     fill_fields: [gcp_billing_export.usage_start_date]
     filters:
       gcp_billing_export.service__description: "%BigQuery%"
       gcp_billing_export.sku__description: "%Storage%"
-      billing_lookup.category_resource_group: "-%Streaming%,-NULL"
       gcp_billing_export.usage_start_date: 120 days
-    sorts: [billing_lookup.category_resource_group, gcp_billing_export.usage_start_date
+    sorts: [gcp_billing_export.usage_start_date
         desc]
     limit: 5000
     column_limit: 50
@@ -388,7 +384,6 @@
     filters:
       gcp_billing_export.service__description: "%BigQuery%"
       gcp_billing_export.sku__description: "%Storage%"
-      billing_lookup.category_resource_group: "-%Streaming%"
       gcp_billing_export.usage_start_date: 120 days
     sorts: [gcp_billing_export.project__name, gcp_billing_export.usage_start_date
         desc]
