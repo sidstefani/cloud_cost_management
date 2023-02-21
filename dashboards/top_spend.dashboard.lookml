@@ -142,9 +142,8 @@
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_bar
-    fields: [gcp_billing_export.total_cost, gcp_billing_export.app_id]
+    fields: [gcp_billing_export.total_cost]
     filters:
-      gcp_billing_export.app_id: "-NULL"
     sorts: [gcp_billing_export.total_cost desc]
     limit: 10
     x_axis_gridlines: false
