@@ -1,12 +1,7 @@
 connection: "looker-private-demo"
 include: "/views/*.view.lkml"                # include all views in the views/ folder in this project
 label: "Google Cloud Billing"
-include: "/dashboards/original_dashboards/gcp_cost_summary.dashboard"
-include: "/dashboards/original_dashboards/credit_summary.dashboard.lookml"
-include: "/dashboards/original_dashboards/project_deepdive.dashboard.lookml"
-include: "/dashboards/original_dashboards/bigquery.dashboard.lookml"
-include: "/dashboards/original_dashboards/cloud_storage.dashboard.lookml"
-include: "/dashboards/original_dashboards/compute_engine.dashboard.lookml"
+include: "/dashboards/original_dashboards/*.dashboard"
 include: "/datagroups/datagroups.lkml"
 include: "/dashboards/cost_history.dashboard.lookml"
 include: "/dashboards/cud_resource.dashboard.lookml"
