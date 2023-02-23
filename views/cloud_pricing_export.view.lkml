@@ -1,5 +1,3 @@
-#Note none of this code was changed
-
 #NDT to persist pricing view back to BigQuery
 view: pricing {
   view_label: "Pricing Taxonomy"

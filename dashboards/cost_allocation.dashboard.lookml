@@ -3,17 +3,14 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: Jl0toTA7opvUtOg4E8Cou2
+  preferred_slug: CgCEUrwhU9VLopZJvLrtab
   elements:
-  - title: Cost Allocation by Resource App ID
-    name: Cost Allocation by Resource App ID
+  - title: Cost Allocation by [Label]
+    name: Cost Allocation by [Label]
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_grid
-    fields: [gcp_billing_export.app_id_with_unallocated, applications.name, gcp_billing_export.total_cost,
-      gcp_billing_export.total_net_cost]
-    filters:
-      gcp_billing_export.app_id: "-NULL"
+    fields: [gcp_billing_export.project__id, gcp_billing_export.total_cost, gcp_billing_export__credits.total_amount]
     sorts: [gcp_billing_export.total_cost desc]
     limit: 500
     show_view_names: false
@@ -40,30 +37,25 @@
         is_active: true
       gcp_billing_export.total_net_cost:
         is_active: true
+      gcp_billing_export__credits.total_amount:
+        is_active: true
     defaults_version: 1
     hidden_fields: []
     y_axes: []
+    hidden_pivots: {}
     listen:
-      Resource Contact Name: gcp_billing_export.contact_name
-      Project ID (PMGT): gcp_billing_export.project_id
-      Resource Component ID: gcp_billing_export.component_id
-      Is Labeling Supported? (Yes / No): eligible_labels.labeling_supported
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
-      Resource Department Name: gcp_billing_export.department_name
     row: 1
     col: 0
     width: 24
     height: 6
-  - title: Cost by App Name
-    name: Cost by App Name
+  - title: Cost by [Label]
+    name: Cost by [Label]
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_grid
-    fields: [gcp_billing_export.total_cost, gcp_billing_export.total_net_cost, gcp_billing_export.app_name]
-    filters:
-      gcp_billing_export.app_name: "-NULL"
+    fields: [gcp_billing_export.total_cost, gcp_billing_export__credits.total_amount,
+      gcp_billing_export.project__id]
     sorts: [gcp_billing_export.total_cost desc 0]
     limit: 500
     show_view_names: false
@@ -90,30 +82,25 @@
         is_active: true
       gcp_billing_export.total_net_cost:
         is_active: true
+      gcp_billing_export__credits.total_amount:
+        is_active: true
     defaults_version: 1
     hidden_fields: []
     y_axes: []
+    hidden_pivots: {}
     listen:
-      Resource Contact Name: gcp_billing_export.contact_name
-      Project ID (PMGT): gcp_billing_export.project_id
-      Resource Component ID: gcp_billing_export.component_id
-      Is Labeling Supported? (Yes / No): eligible_labels.labeling_supported
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
-      Resource Department Name: gcp_billing_export.department_name
     row: 15
     col: 16
     width: 8
     height: 4
-  - title: Cost by Department Name
-    name: Cost by Department Name
+  - title: Cost by [Label]
+    name: Cost by [Label] (2)
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_grid
-    fields: [gcp_billing_export.total_cost, gcp_billing_export.total_net_cost, gcp_billing_export.department_name]
+    fields: [gcp_billing_export.total_cost, gcp_billing_export.project__id, gcp_billing_export__credits.total_amount]
     filters:
-      gcp_billing_export.department_name: "-NULL"
       gcp_billing_export.total_cost: ">0"
     sorts: [gcp_billing_export.total_cost desc 0]
     limit: 500
@@ -141,29 +128,24 @@
         is_active: true
       gcp_billing_export.total_net_cost:
         is_active: true
+      gcp_billing_export__credits.total_amount:
+        is_active: true
     defaults_version: 1
     hidden_fields: []
     y_axes: []
+    hidden_pivots: {}
     listen:
-      Resource Contact Name: gcp_billing_export.contact_name
-      Project ID (PMGT): gcp_billing_export.project_id
-      Resource Component ID: gcp_billing_export.component_id
-      Is Labeling Supported? (Yes / No): eligible_labels.labeling_supported
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
     row: 11
     col: 16
     width: 8
     height: 4
-  - title: Cost by Originator
-    name: Cost by Originator
+  - title: Cost by [Label]
+    name: Cost by [Label] (3)
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_grid
-    fields: [gcp_billing_export.total_cost, gcp_billing_export.total_net_cost, gcp_billing_export.originator]
-    filters:
-      gcp_billing_export.originator: "-NULL"
+    fields: [gcp_billing_export.total_cost, gcp_billing_export.project__id, gcp_billing_export__credits.total_amount]
     sorts: [gcp_billing_export.total_cost desc 0]
     limit: 500
     show_view_names: false
@@ -190,37 +172,26 @@
         is_active: true
       gcp_billing_export.total_net_cost:
         is_active: true
+      gcp_billing_export__credits.total_amount:
+        is_active: true
     defaults_version: 1
     hidden_fields: []
     y_axes: []
+    hidden_pivots: {}
     listen:
-      Resource Contact Name: gcp_billing_export.contact_name
-      Project ID (PMGT): gcp_billing_export.project_id
-      Resource Component ID: gcp_billing_export.component_id
-      Is Labeling Supported? (Yes / No): eligible_labels.labeling_supported
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
-      Resource Department Name: gcp_billing_export.department_name
     row: 7
     col: 16
     width: 8
     height: 4
-  - type: button
-    name: button_508
-    rich_content_json: '{"text":"Unallocated Resource App ID","description":"","newTab":true,"alignment":"center","size":"medium","style":"FILLED","color":"#1A73E8","href":"https://cmebilling.cloud.looker.com/dashboards/34?Usage%20Start%20Date=3%20months%20ago%20for%203%20months&App%20ID%20Test=Unallocated%20App%20ID"}'
-    row: 0
-    col: 0
-    width: 4
-    height: 1
-  - title: Trending Resource App ID Costs
-    name: Trending Resource App ID Costs
+  - title: Trending [Label] Costs
+    name: Trending [Label] Costs
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.total_net_cost, gcp_billing_export.usage_start_week,
-      gcp_billing_export.app_id_with_unallocated]
-    pivots: [gcp_billing_export.app_id_with_unallocated]
+      gcp_billing_export.project__id]
+    pivots: [gcp_billing_export.project__id]
     fill_fields: [gcp_billing_export.usage_start_week]
     filters:
       gcp_billing_export.usage_start_week: 26 weeks
@@ -277,26 +248,19 @@
     hidden_fields: []
     y_axes: []
     listen:
-      Resource Contact Name: gcp_billing_export.contact_name
-      Project ID (PMGT): gcp_billing_export.project_id
-      Resource Component ID: gcp_billing_export.component_id
-      Is Labeling Supported? (Yes / No): eligible_labels.labeling_supported
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
-      Resource Department Name: gcp_billing_export.department_name
     row: 7
     col: 0
     width: 16
     height: 12
-  - title: 'Trending PMGT ID Costs '
-    name: 'Trending PMGT ID Costs '
+  - title: 'Trending [Label] Costs '
+    name: 'Trending [Label] Costs '
     model: gcp_billing
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.total_net_cost, gcp_billing_export.usage_start_week,
-      gcp_billing_export.cme_project_id]
-    pivots: [gcp_billing_export.cme_project_id]
+      gcp_billing_export.project__id]
+    pivots: [gcp_billing_export.project__id]
     fill_fields: [gcp_billing_export.usage_start_week]
     sorts: [gcp_billing_export.usage_start_week desc]
     limit: 500
@@ -351,104 +315,19 @@
     hidden_fields: []
     y_axes: []
     listen:
-      Resource Contact Name: gcp_billing_export.contact_name
-      Project ID (PMGT): gcp_billing_export.project_id
-      Resource Component ID: gcp_billing_export.component_id
-      Is Labeling Supported? (Yes / No): eligible_labels.labeling_supported
-      Application Name: applications.name
-      App ID (Resource): gcp_billing_export.app_id_with_unallocated
       Usage Start Date: gcp_billing_export.usage_start_date
-      Resource Department Name: gcp_billing_export.department_name
     row: 19
     col: 0
     width: 24
     height: 12
   - type: button
-    name: button_679
+    name: button_347
     rich_content_json: '{"text":"User Guide","description":"User Guide","newTab":true,"alignment":"right","size":"small","style":"FILLED","color":"#5A6874","href":"https://docs.google.com/document/d/1LqB3XHoCSCkIqIm4qyMLmCMetl3bSzTHZZTJC3Nuv1Y/edit?usp=share_link"}'
     row: 0
     col: 4
     width: 20
     height: 1
   filters:
-  - name: App ID (Resource)
-    title: App ID (Resource)
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.app_id_with_unallocated
-  - name: Application Name
-    title: Application Name
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: tag_list
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: applications.name
-  - name: Project ID (PMGT)
-    title: Project ID (PMGT)
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: advanced
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.project_id
-  - name: Resource Component ID
-    title: Resource Component ID
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: advanced
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.component_id
-  - name: Resource Contact Name
-    title: Resource Contact Name
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: advanced
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.contact_name
-  - name: Resource Department Name
-    title: Resource Department Name
-    type: field_filter
-    default_value: ''
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: advanced
-      display: popover
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: gcp_billing_export.department_name
   - name: Usage Start Date
     title: Usage Start Date
     type: field_filter
@@ -463,16 +342,3 @@
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.usage_start_date
-  - name: Is Labeling Supported? (Yes / No)
-    title: Is Labeling Supported? (Yes / No)
-    type: field_filter
-    default_value: 'Yes'
-    allow_multiple_values: true
-    required: false
-    ui_config:
-      type: button_toggles
-      display: inline
-    model: gcp_billing
-    explore: gcp_billing_export
-    listens_to_filters: []
-    field: eligible_labels.labeling_supported

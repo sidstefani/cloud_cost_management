@@ -1,4 +1,5 @@
 include: "/views/*.view.lkml"
+include: "/views/gcp_billing_export.view.lkml"
 
 view: +gcp_billing_export {
 ##################### Category Reporting Metrics #####################
@@ -16,6 +17,10 @@ parameter: category {
     label: "Region"
     value: "location__region"
   }
+  allowed_value: {
+    label: "Project ID"
+    value: "project__id"
+  }
 }
 
 dimension: category_selected {
@@ -23,6 +28,7 @@ dimension: category_selected {
   sql:
     {% if category._parameter_value == 'service_description' %} ${service__description}
     {% elsif category._parameter_value == 'location__region' %} ${location__region}
+    {% elsif category._parameter_value == 'project__id' %} ${project__id}
     {% else %} ${service__description}
     {% endif %} ;;
 }

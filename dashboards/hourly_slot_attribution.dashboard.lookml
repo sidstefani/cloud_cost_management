@@ -1,15 +1,16 @@
-- name: add_a_unique_name_1673982902
+- name: add_a_unique_name_1673982873
   title: Untitled Visualization
   model: gcp_billing
   explore: gcp_billing_export
   type: looker_column
-  fields: [gcp_billing_export.project__name, gcp_billing_export.total_usage_amount,
-    gcp_billing_export.usage_start_date]
+  fields: [gcp_billing_export.project__name, gcp_billing_export.usage_start_hour,
+    gcp_billing_export.total_usage_amount]
   pivots: [gcp_billing_export.project__name]
+  fill_fields: [gcp_billing_export.usage_start_hour]
   filters:
     gcp_billing_export.sku__description: Analysis Slots Attribution
-    gcp_billing_export.usage_start_date: 1 months
-  sorts: [gcp_billing_export.project__name, gcp_billing_export.usage_start_date desc]
+    gcp_billing_export.usage_start_date: 2022/12/07
+  sorts: [gcp_billing_export.project__name, gcp_billing_export.usage_start_hour desc]
   limit: 10
   total: true
   dynamic_fields:
@@ -36,7 +37,7 @@
   y_axis_reversed: false
   plot_size_by_field: false
   trellis: ''
-  stacking: normal
+  stacking: ''
   limit_displayed_rows: false
   legend_position: center
   point_style: none
@@ -49,10 +50,6 @@
   show_totals_labels: false
   show_silhouette: false
   totals_color: "#808080"
-  y_axes: []
-  x_axis_zoom: true
-  y_axis_zoom: true
-  series_types: {}
   show_row_numbers: true
   transpose: false
   truncate_text: true
@@ -68,6 +65,8 @@
   conditional_formatting_include_nulls: false
   defaults_version: 1
   hidden_fields: [gcp_billing_export.total_usage_amount]
+  y_axes: []
   hidden_pivots: {}
+  series_types: {}
   show_null_points: true
   interpolation: linear

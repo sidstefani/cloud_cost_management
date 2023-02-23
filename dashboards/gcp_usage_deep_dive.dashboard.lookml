@@ -3,7 +3,6 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: xpbuWOTpKavFr2WsBUscLp
   elements:
   - title: YTD Costs
     name: YTD Costs
@@ -394,7 +393,7 @@
     type: text
     title_text: <strong><font color="#000000 " size="6" weight="bold">GCP Usage Deep
       Dive</font><strong>
-    subtitle_text: "<i>Costs by Billing & Services for Specified Project or App ID</i>"
+    subtitle_text: "<i>Costs by Billing & Services for Specified Project</i>"
     body_text: ''
     row: 1
     col: 3
