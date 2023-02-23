@@ -464,6 +464,7 @@ view: gcp_billing_export {
     measure: total_credit_amount {
       type: sum
       sql: ${credit_amount} ;;
+      value_format_name: usd
     }
 
     dimension: credit_amount {
