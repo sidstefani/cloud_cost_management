@@ -61,7 +61,7 @@
     height: 3
   - title: Analysis Unit
     name: Analysis Unit
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.usage__amount_in_calculated_units, gcp_billing_export.usage_start_month,
@@ -128,7 +128,7 @@
     height: 7
   - title: Storage Unit
     name: Storage Unit
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.usage__amount_in_calculated_units, gcp_billing_export.usage_start_month,
@@ -195,7 +195,7 @@
     height: 7
   - title: Streaming Unit
     name: Streaming Unit
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.usage__amount_in_calculated_units, gcp_billing_export.usage_start_month,
@@ -257,7 +257,7 @@
     height: 7
   - title: Analysis Cost
     name: Analysis Cost
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.usage_start_month, pricing.pricing_type, gcp_billing_export.total_cost]
@@ -335,7 +335,7 @@
     height: 7
   - title: Streaming Cost
     name: Streaming Cost
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.usage_start_month, pricing.pricing_type, gcp_billing_export.total_cost]
@@ -401,7 +401,7 @@
     height: 7
   - title: Storage Cost
     name: Storage Cost
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.usage_start_month, pricing.pricing_type, gcp_billing_export.total_cost]
@@ -476,7 +476,7 @@
     height: 2
   - title: Analysis Cost (Copy)
     name: Analysis Cost (Copy)
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.total_cost,
@@ -571,7 +571,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.project__id
@@ -585,7 +585,7 @@
       type: advanced
       display: popover
       options: []
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.usage_start_date

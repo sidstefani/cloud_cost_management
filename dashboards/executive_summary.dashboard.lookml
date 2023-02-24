@@ -6,7 +6,7 @@
   elements:
   - title: Invoice Net Cost and Credit Amount
     name: Invoice Net Cost and Credit Amount
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.total_cost, gcp_billing_export.total_net_cost, gcp_billing_export__credits.total_amount,
@@ -63,7 +63,7 @@
     height: 8
   - title: New Tile
     name: New Tile
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.total_net_cost, gcp_billing_export.usage_start_year]
@@ -136,7 +136,7 @@
     height: 2
   - title: New Tile
     name: New Tile (2)
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.total_net_cost, gcp_billing_export.usage_start_quarter]
@@ -209,7 +209,7 @@
     height: 2
   - title: New Tile
     name: New Tile (3)
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.total_net_cost, gcp_billing_export.usage_start_month]
@@ -282,7 +282,7 @@
     height: 2
   - title: New Tile
     name: New Tile (4)
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.total_net_cost, gcp_billing_export.usage_start_week]
@@ -355,7 +355,7 @@
     height: 2
   - title: Billing Account
     name: Billing Account
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_single_record
     fields: [gcp_billing_export.billing_account_id, gcp_billing_export.total_cost,
@@ -378,7 +378,7 @@
     height: 4
   - title: MoM Invoice Amount
     name: MoM Invoice Amount
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.total_net_cost, gcp_billing_export.invoice_month_month]
@@ -552,7 +552,7 @@
     height: 6
   - title: Quarterly Invoice Amount
     name: Quarterly Invoice Amount
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.total_cost, gcp_billing_export.total_net_cost, gcp_billing_export.invoice_month_quarter,
@@ -614,7 +614,7 @@
     height: 8
   - title: Monthly Support Cost Amount
     name: Monthly Support Cost Amount
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.total_cost, gcp_billing_export.total_net_cost, gcp_billing_export__credits.total_amount,
@@ -706,7 +706,7 @@
     height: 1
   - title: Contractual Spend with Actual Cost
     name: Contractual Spend with Actual Cost
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [spend.month_month, spend.total_forecast, gcp_billing_export.total_net_cost]
@@ -787,7 +787,7 @@
       type: advanced
       display: popover
       options: []
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.usage_start_date
@@ -800,7 +800,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: billing_lookup.service_name
@@ -813,7 +813,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.project__name
@@ -826,7 +826,7 @@
     ui_config:
       type: advanced
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.location__region
@@ -839,7 +839,7 @@
     ui_config:
       type: button_toggles
       display: inline
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: pricing_mapping.marketplace_purchase

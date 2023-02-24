@@ -7,7 +7,7 @@
   elements:
   - title: YTD Costs
     name: YTD Costs
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.usage_start_year, gcp_billing_export.total_net_cost]
@@ -79,7 +79,7 @@
     height: 2
   - title: WTD Costs
     name: WTD Costs
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.usage_start_week, gcp_billing_export.total_net_cost]
@@ -151,7 +151,7 @@
     height: 2
   - title: MTD Costs
     name: MTD Costs
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.total_net_cost]
@@ -223,7 +223,7 @@
     height: 2
   - title: QTD Costs
     name: QTD Costs
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.usage_start_quarter, gcp_billing_export.total_net_cost]
@@ -311,7 +311,7 @@
     height: 2
   - title: CREDIT USAGE BY PROJECT
     name: CREDIT USAGE BY PROJECT
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_bar
     fields: [gcp_billing_export__credits.total_amount, gcp_billing_export.project__name]
@@ -374,7 +374,7 @@
     height: 9
   - title: TOP BILLED PROJECTS
     name: TOP BILLED PROJECTS
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_waterfall
     fields: [gcp_billing_export.project__name, gcp_billing_export.total_cost]
@@ -441,7 +441,7 @@
     height: 2
   - title: YEAR OVER YEAR SPEND
     name: YEAR OVER YEAR SPEND
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.total_cost, gcp_billing_export.usage_start_month_name,
@@ -507,7 +507,7 @@
     height: 1
   - title: REGION
     name: REGION
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.total_cost, gcp_billing_export__credits.total_amount,
@@ -542,7 +542,7 @@
     height: 6
   - title: SKU
     name: SKU
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.sku__description, gcp_billing_export.total_cost, gcp_billing_export__credits.total_amount]
@@ -574,7 +574,7 @@
     height: 6
   - title: SERVICE AMOUNT
     name: SERVICE AMOUNT
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.total_cost, gcp_billing_export__credits.total_amount,
@@ -607,7 +607,7 @@
     height: 6
   - title: Credit Amount
     name: Credit Amount
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export__credits.total_amount, gcp_billing_export.total_cost]
@@ -680,7 +680,7 @@
     height: 3
   - title: COST VS CREDIT ANALYSIS
     name: COST VS CREDIT ANALYSIS
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.usage_start_week, gcp_billing_export__credits.total_amount,
@@ -750,7 +750,7 @@
     height: 7
   - title: PERCENT OF SPEND
     name: PERCENT OF SPEND
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.usage_start_week, gcp_billing_export__credits.total_amount,
@@ -837,7 +837,7 @@
     ui_config:
       type: advanced
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.service__description
@@ -850,7 +850,7 @@
     ui_config:
       type: button_group
       display: inline
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: pricing_mapping.marketplace_purchase

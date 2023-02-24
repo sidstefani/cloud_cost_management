@@ -7,7 +7,7 @@
   elements:
   - title: GKE Commitment Usage
     name: GKE Commitment Usage
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.usage__amount_in_calculated_units]
@@ -65,7 +65,7 @@
     height: 7
   - title: Cloud SQL Usage Insights
     name: Cloud SQL Usage Insights
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.usage__amount_in_calculated_units]
@@ -139,7 +139,7 @@
     height: 1
   - title: Cloud SQL Usage Insights (Copy)
     name: Cloud SQL Usage Insights (Copy)
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.usage__amount_in_calculated_units]
@@ -216,7 +216,7 @@
     height: 2
   - title: Cloud SQL Usage Insights (Copy 2)
     name: Cloud SQL Usage Insights (Copy 2)
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.usage__amount_in_calculated_units]
@@ -285,7 +285,7 @@
     height: 2
   - title: GKE CUD vs Total Cost
     name: GKE CUD vs Total Cost
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.total_cud_cost, gcp_billing_export.total_non_cud_cost,
@@ -358,7 +358,7 @@
     height: 7
   - title: GKE CUD Coverage
     name: GKE CUD Coverage
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.cud_coverage]
@@ -430,7 +430,7 @@
     height: 2
   - title: VMware CUD vs Total Cost
     name: VMware CUD vs Total Cost
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.total_cud_cost, gcp_billing_export.total_non_cud_cost,
@@ -502,7 +502,7 @@
     height: 7
   - title: Cloud Run CUD vs Total Cost
     name: Cloud Run CUD vs Total Cost
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.total_cud_cost, gcp_billing_export.total_non_cud_cost,
@@ -574,7 +574,7 @@
     height: 7
   - title: Cloud SQL CUD vs Total Cost
     name: Cloud SQL CUD vs Total Cost
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_column
     fields: [gcp_billing_export.total_cud_cost, gcp_billing_export.total_non_cud_cost,
@@ -646,7 +646,7 @@
     height: 7
   - title: VMware CUD Coverage
     name: VMware CUD Coverage
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.cud_coverage]
@@ -717,7 +717,7 @@
     height: 2
   - title: Cloud Run CUD Coverage
     name: Cloud Run CUD Coverage
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.cud_coverage]
@@ -788,7 +788,7 @@
     height: 2
   - title: CloudSQL CUD Coverage
     name: CloudSQL CUD Coverage
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.usage_start_month, gcp_billing_export.cud_coverage]
@@ -868,7 +868,7 @@
       type: advanced
       display: popover
       options: []
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.usage_start_date
@@ -881,7 +881,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.project__id
@@ -894,7 +894,7 @@
     ui_config:
       type: advanced
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.machine_type

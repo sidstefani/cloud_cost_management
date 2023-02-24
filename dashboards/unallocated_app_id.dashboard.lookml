@@ -7,7 +7,7 @@
   elements:
   - title: Unallocated App ID
     name: Unallocated App ID
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.project__name, gcp_billing_export.department_name,
@@ -126,7 +126,7 @@
     height: 1
   - title: Labeled vs Unlabeled Resources (as % of Spend)
     name: Labeled vs Unlabeled Resources (as % of Spend)
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_pie
     fields: [labeled_vs_unlabeled_resources_1, gcp_billing_export.total_net_cost]
@@ -241,7 +241,7 @@
     height: 5
   - title: Labeled Resources
     name: Labeled Resources
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.total_net_cost, labeled_vs_unlabeled_resources_1]
@@ -372,7 +372,7 @@
     height: 1
   - title: 'Top Ten Unallocated Projects '
     name: 'Top Ten Unallocated Projects '
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_pie
     fields: [gcp_billing_export.project__name, gcp_billing_export.total_net_cost]
@@ -439,7 +439,7 @@
     height: 5
   - title: Unlabeled Resources
     name: Unlabeled Resources
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: single_value
     fields: [gcp_billing_export.total_net_cost, labeled_vs_unlabeled_resources_1]
@@ -568,7 +568,7 @@
     ui_config:
       type: relative_timeframes
       display: inline
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.usage_start_date
@@ -581,7 +581,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.contact_name
@@ -594,7 +594,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.department_name
@@ -607,7 +607,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.project__id
@@ -620,7 +620,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.project__name
@@ -633,7 +633,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.component_id
@@ -647,7 +647,7 @@
       type: advanced
       display: popover
       options: []
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.cme_project_id
@@ -660,7 +660,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.project_environment
@@ -673,7 +673,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: applications.name
@@ -686,7 +686,7 @@
     ui_config:
       type: advanced
       display: popover
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.app_id_resource

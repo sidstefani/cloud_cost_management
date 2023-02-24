@@ -7,7 +7,7 @@
   elements:
   - title: Cost Allocation by [Label]
     name: Cost Allocation by [Label]
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.project__id, gcp_billing_export.total_cost, gcp_billing_export__credits.total_amount]
@@ -51,7 +51,7 @@
     height: 6
   - title: Cost by [Label]
     name: Cost by [Label]
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.total_cost, gcp_billing_export__credits.total_amount,
@@ -96,7 +96,7 @@
     height: 4
   - title: Cost by [Label]
     name: Cost by [Label] (2)
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.total_cost, gcp_billing_export.project__id, gcp_billing_export__credits.total_amount]
@@ -142,7 +142,7 @@
     height: 4
   - title: Cost by [Label]
     name: Cost by [Label] (3)
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.total_cost, gcp_billing_export.project__id, gcp_billing_export__credits.total_amount]
@@ -186,7 +186,7 @@
     height: 4
   - title: Trending [Label] Costs
     name: Trending [Label] Costs
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.total_net_cost, gcp_billing_export.usage_start_week,
@@ -255,7 +255,7 @@
     height: 12
   - title: 'Trending [Label] Costs '
     name: 'Trending [Label] Costs '
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     type: looker_line
     fields: [gcp_billing_export.total_net_cost, gcp_billing_export.usage_start_week,
@@ -338,7 +338,7 @@
       type: advanced
       display: popover
       options: []
-    model: gcp_billing
+    model: gcp_billing_block
     explore: gcp_billing_export
     listens_to_filters: []
     field: gcp_billing_export.usage_start_date
