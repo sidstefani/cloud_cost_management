@@ -438,7 +438,7 @@ view: gcp_billing_export {
       type: sum
       sql: ${cost} ;;
       value_format: "#,##0.00"
-      html: <a href="#drillmenu" target="_self">{{ currency_symbol._value }}{{ rendered_value }}</a>;;
+      # html: <a href="#drillmenu" target="_self">{{ currency_symbol._value }}{{ rendered_value }}</a>;;
       drill_fields: [service__description,total_cost]
     }
 
