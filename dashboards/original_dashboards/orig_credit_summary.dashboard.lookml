@@ -1,5 +1,5 @@
 - dashboard: credit_summary
-  title: Credit Summary
+  title: Credit Summary (Original)
   layout: newspaper
   preferred_viewer: dashboards-next
   elements:

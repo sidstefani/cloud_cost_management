@@ -6,7 +6,9 @@ explore: +gcp_billing_export {
     query: {
       dimensions: [gcp_billing_export.usage_start_year, gcp_billing_export.usage_start_month_name
         , gcp_billing_export.currency, gcp_billing_export.usage_start_date
+
       ]
+       # , pricing_mapping.category
       # filters: [gcp_billing_export.period: "Year"]
       measures: [gcp_billing_export.total_cost] #, gcp_billing_export__credits.total_amount]
     }
