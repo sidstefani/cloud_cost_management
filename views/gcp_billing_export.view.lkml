@@ -2,11 +2,13 @@ view: gcp_billing_export {
   view_label: "Billing"
   derived_table: {
     partition_keys: ["partition_date"]
-    #Previous Value: Usage Start Time - the previous value creates a partition for each usage start time - very granular and will
     # V3 - using Partition Date and introducing Usage Start Date as Cluster Keys
+
+    #Previous Value: Usage Start Time - the previous value creates a partition for each usage start time - very granular and will
     # result in very expensive queries as the partition scheme is not very useful
     cluster_keys: ["usage_start_date"]
     datagroup_trigger: daily_datagroup
+
     #Sidney Stefani: Commented out in order to switch from Incremental PDT to PDT
     # Eric Ferreria: Correcting increment key and offset to take advantage of incremental PDT
     # We know that the GCP Billing Extract can alter the records of the current partition, therefore our incremental key must be based
@@ -20,6 +22,32 @@ view: gcp_billing_export {
       , generate_uuid() as pk
       , _PARTITIONTIME as partition_date
       , DATE(usage_start_time) as usage_start_date
+      , CASE
+          WHEN currency = 'USD' THEN '$'
+          WHEN currency = 'EUR' THEN '€'
+          WHEN currency = 'JPY' THEN '¥'
+          WHEN currency = 'AUD'THEN 'A$'
+          WHEN currency = 'BRL'THEN 'R$'
+          WHEN currency = 'CAD'THEN 'C$'
+          WHEN currency = 'HKD' THEN 'HK$'
+          WHEN currency = 'INR' THEN '₹'
+          WHEN currency = 'IDR' THEN 'Rp'
+          WHEN currency = 'ILS' THEN '₪'
+          WHEN currency = 'MXN' THEN 'Mex$'
+          WHEN currency = 'NZD' THEN 'NZ$'
+          WHEN currency = 'GBP' THEN '£'
+          ELSE CONCAT(currency, ' ')
+        END AS currency_symbol
+      , (SELECT
+          CASE WHEN gcp_billing_export__credits.type = 'DISCOUNT' then 'Discount'
+            WHEN gcp_billing_export__credits.type = 'PROMOTION' then 'Promotion'
+            WHEN gcp_billing_export__credits.name like '%Committed Usage%' then 'Committed Usage Discount'
+            WHEN gcp_billing_export__credits.name like '%Sustained Usage%' then 'Sustained Usage Discount'
+            ELSE gcp_billing_export__credits.type
+          END
+        FROM UNNEST(credits) as gcp_billing_export__credits ) as credit_type
+      , (SELECT gcp_billing_export__credits.name FROM UNNEST(credits) as gcp_billing_export__credits) as credit_type_name
+
       FROM `@{BILLING_TABLE}`
       WHERE {% incrementcondition %} _PARTITIONDATE {% endincrementcondition %} ;;
     #Sidney Stefani: Commented out in order to switch from Incremental PDT to PDT
@@ -449,7 +477,7 @@ view: gcp_billing_export {
       sql: ${total_cost} - ${total_credit_amount} ;;
       value_format: "#,##0.00"
       html: <a href="#drillmenu" target="_self">{{ currency_symbol._value }}{{ rendered_value }}</a>;;
-      drill_fields: [total_cost, gcp_billing_export__credits.total_amount]
+      drill_fields: [total_cost, total_credit_amount]
     }
 
   measure: total_net_cost_old {
@@ -461,16 +489,71 @@ view: gcp_billing_export {
     drill_fields: [total_cost, gcp_billing_export__credits.total_amount]
   }
 
-    measure: total_credit_amount {
-      type: sum
-      sql: ${credit_amount} ;;
-      value_format_name: usd
-    }
+  measure: total_credit_amount {
+    type: sum
+    sql: ${credit_amount} ;;
+    value_format_name: usd
+  }
 
-    dimension: credit_amount {
-      type: number
-      sql: ( SELECT SUM(-gcp_billing_export__credits.amount) FROM UNNEST(gcp_billing_export.credits) as gcp_billing_export__credits  ) ;;
-    }
+
+  dimension: credit_amount {
+    type: number
+    sql: ( SELECT SUM(-gcp_billing_export__credits.amount) FROM UNNEST(gcp_billing_export.credits) as gcp_billing_export__credits  ) ;;
+  }
+
+  dimension: credit_type {
+    type: string
+    # sql: ( SELECT
+    # case when gcp_billing_export__credits.type = 'DISCOUNT' then 'Discount'
+    #           when gcp_billing_export__credits.type = 'PROMOTION' then 'Promotion'
+    #           when ${credit_type_name} like '%Committed Usage%' then 'Committed Usage Discount'
+    #           when ${credit_type_name} like '%Sustained Usage%' then 'Sustained Usage Discount'
+    #           else gcp_billing_export__credits.type end
+    # FROM UNNEST(gcp_billing_export.credits) as gcp_billing_export__credits ) ;;
+    sql: ${TABLE}.credit_type ;;
+  }
+
+  dimension: credit_type_name {
+    type: string
+    sql: ${TABLE}.credit_type_name  ;;
+  }
+
+  dimension: currency_symbol {
+    type: string
+    sql: ${TABLE}.currency_symbol ;;
+  }
+
+
+
+  measure: total_committed_use_discount {
+    # view_label: "Credits"
+    type: sum
+    value_format: "#,##0.00"
+    # html: <a href="#drillmenu" target="_self">{{ gcp_billing_export.currency_symbol._value }}{{ rendered_value }}</a>;;
+    sql: -1*${credit_amount} ;;
+    filters: [credit_type: "Committed Usage Discount, COMMITTED_USAGE_DISCOUNT_DOLLAR_BASE"]
+    drill_fields: [gcp_billing_export__credits.id,gcp_billing_export__credits.name,total_credit_amount]
+  }
+
+  measure: total_sustained_use_discount {
+    # view_label: "Credits"
+    type: sum
+    value_format: "#,##0.00"
+    html: <a href="#drillmenu" target="_self">{{ gcp_billing_export.currency_symbol._value }}{{ rendered_value }}</a>;;
+    sql: -1*${credit_amount} ;;
+    filters: [credit_type: "Sustained Usage Discount"]
+    drill_fields: [gcp_billing_export__credits.id,gcp_billing_export__credits.name,total_credit_amount]
+  }
+
+  measure: total_promotional_credit {
+    # view_label: "Credits"
+    type: sum
+    value_format: "#,##0.00"
+    html: <a href="#drillmenu" target="_self">{{ gcp_billing_export.currency_symbol._value }}{{ rendered_value }}</a>;;
+    sql: -1*${credit_amount} ;;
+    filters: [credit_type: "Promotion"]
+    drill_fields: [gcp_billing_export__credits.id,gcp_billing_export__credits.name,total_credit_amount]
+  }
 
 ####### PROJECT LABELS ########
     dimension: test_project_label {

@@ -485,8 +485,9 @@ view: recommendations_export {
   measure: total_savings {
     type: sum
     sql: -1*${primary_impact__cost_projection__cost__units} ;;
-    html: <a href="#drillmenu" target="_self">{{ currency_symbol._value }}{{ rendered_value }}</a>;;
-    value_format: "#,##0.00"
+    # html: <a href="#drillmenu" target="_self">{{ currency_symbol._value }}{{ rendered_value }}</a>;;
+    # value_format: "#,##0.00"
+    value_format_name: usd
     drill_fields: [recommender, priority, project_name, service, category, recommender_subtype, description, last_refresh_date]
   }
 }
