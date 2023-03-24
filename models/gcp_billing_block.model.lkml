@@ -4,7 +4,7 @@ label: "Google Cloud Billing"
 
 include: "/datagroups/datagroups.lkml"
 # include: "/dashboards/*.dashboard"
-
+include: "/dashboards/unallocated_app_id.dashboard.lookml"
 
 include: "/dashboards/original_dashboards/*.dashboard"
 include: "/dashboards/new_dashboards/*.dashboard"
