@@ -1,4 +1,4 @@
-connection: "looker-private-demo"
+connection: "pso-eng"
 include: "/views/*.view.lkml"                # include all views in the views/ folder in this project
 label: "Google Cloud Billing"
 
