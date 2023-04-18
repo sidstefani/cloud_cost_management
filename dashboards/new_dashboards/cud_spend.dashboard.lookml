@@ -130,13 +130,6 @@
     col: 0
     width: 16
     height: 2
-  - type: button
-    name: button_710
-    rich_content_json: '{"text":"User Guide","description":"User Guide","newTab":true,"alignment":"right","size":"small","style":"FILLED","color":"#5A6874","href":"https://docs.google.com/document/d/1LqB3XHoCSCkIqIm4qyMLmCMetl3bSzTHZZTJC3Nuv1Y/edit?usp=share_link"}'
-    row: 0
-    col: 0
-    width: 24
-    height: 1
   - title: Cloud SQL Usage Insights (Copy)
     name: Cloud SQL Usage Insights (Copy)
     model: gcp_billing_block
