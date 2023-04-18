@@ -13,7 +13,7 @@ constant: BILLING_TABLE {
 }
 
 constant: PRICING_TABLE {
-  value: "billing-logs-359516.detailed_sku_prices.cloud_pricing_export"
+  value: "sidney-stefani.testing_looker.pricing_export"
   export: override_optional
 }
 
