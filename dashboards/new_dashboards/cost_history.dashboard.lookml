@@ -4,13 +4,6 @@
   preferred_viewer: dashboards-next
   description: ''
   elements:
-  - type: button
-    name: button_689
-    rich_content_json: '{"text":"User Guide","description":"User Guide","newTab":true,"alignment":"right","size":"small","style":"FILLED","color":"#5A6874","href":"https://docs.google.com/document/d/1LqB3XHoCSCkIqIm4qyMLmCMetl3bSzTHZZTJC3Nuv1Y/edit?usp=share_link"}'
-    row: 0
-    col: 0
-    width: 24
-    height: 1
   - title: Current Month
     name: Current Month
     model: gcp_billing_block

@@ -8,16 +8,16 @@ constant: RECOMMENDATION_TABLE {
 }
 
 constant: BILLING_TABLE {
-  value: "billing-logs-359516.detailed_billing_export.gcp_billing_export_resource_v1_01D318_0476A9_4CF367"
+  value: "sidney-stefani.testing_looker.detailed_billing_data"
   export: override_optional
 }
 
 constant: PRICING_TABLE {
-  value: "billing-logs-359516.detailed_sku_prices.cloud_pricing_export"
+  value: "sidney-stefani.testing_looker.pricing_export"
   export: override_optional
 }
 
 constant: CONNECTION {
-  value: "looker-private-demo"
+  value: "pso-eng"
   export: override_optional
 }
