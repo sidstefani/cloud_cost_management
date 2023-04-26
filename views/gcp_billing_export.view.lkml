@@ -38,15 +38,8 @@ view: gcp_billing_export {
           WHEN currency = 'GBP' THEN '£'
           ELSE CONCAT(currency, ' ')
         END AS currency_symbol
-      , (SELECT
-          CASE WHEN gcp_billing_export__credits.type = 'DISCOUNT' then 'Discount'
-            WHEN gcp_billing_export__credits.type = 'PROMOTION' then 'Promotion'
-            WHEN gcp_billing_export__credits.name like '%Committed Usage%' then 'Committed Usage Discount'
-            WHEN gcp_billing_export__credits.name like '%Sustained Usage%' then 'Sustained Usage Discount'
-            ELSE gcp_billing_export__credits.type
-          END
-        FROM UNNEST(credits) as gcp_billing_export__credits ) as credit_type
-      , (SELECT gcp_billing_export__credits.name FROM UNNEST(credits) as gcp_billing_export__credits) as credit_type_name
+      , ARRAY_TO_STRING(ARRAY((SELECT gcp_billing_export__credits.type FROM UNNEST(credits) as gcp_billing_export__credits )),', ') as credit_type_raw
+      , ARRAY_TO_STRING(ARRAY((SELECT gcp_billing_export__credits.name FROM UNNEST(credits) as gcp_billing_export__credits)),', ') as credit_type_name
 
       FROM `@{BILLING_TABLE}`
       WHERE {% incrementcondition %} _PARTITIONDATE {% endincrementcondition %} ;;
@@ -503,14 +496,14 @@ view: gcp_billing_export {
 
   dimension: credit_type {
     type: string
-    # sql: ( SELECT
-    # case when gcp_billing_export__credits.type = 'DISCOUNT' then 'Discount'
-    #           when gcp_billing_export__credits.type = 'PROMOTION' then 'Promotion'
-    #           when ${credit_type_name} like '%Committed Usage%' then 'Committed Usage Discount'
-    #           when ${credit_type_name} like '%Sustained Usage%' then 'Sustained Usage Discount'
-    #           else gcp_billing_export__credits.type end
-    # FROM UNNEST(gcp_billing_export.credits) as gcp_billing_export__credits ) ;;
-    sql: ${TABLE}.credit_type ;;
+    sql:
+    case when ${TABLE}.credit_type_raw = 'DISCOUNT' then 'Discount'
+              when ${TABLE}.credit_type_raw = 'PROMOTION' then 'Promotion'
+              when ${credit_type_name} like '%Committed Usage%' then 'Committed Usage Discount'
+              when ${credit_type_name} like '%Sustained Usage%' then 'Sustained Usage Discount'
+              else ${TABLE}.credit_type_raw end
+     ;;
+    # sql: ${TABLE}.credit_type ;;
   }
 
   dimension: credit_type_name {
