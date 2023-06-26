@@ -11,10 +11,10 @@
     explore: gcp_billing_export
     type: looker_grid
     fields: [gcp_billing_export.project__name, gcp_billing_export.service__description,
-      gcp_billing_export.sku__description, gcp_billing_export.project_id, gcp_billing_export.total_net_cost]
+      gcp_billing_export.sku__description, gcp_billing_export.project__id, gcp_billing_export.total_net_cost]
     filters:
       pricing_mapping.marketplace_purchase: 'No'
-      eligible_labels.labeling_supported: 'Yes'
+      # eligible_labels.labeling_supported: 'Yes'
     sorts: [gcp_billing_export.total_net_cost desc 0]
     limit: 1000
     column_limit: 50

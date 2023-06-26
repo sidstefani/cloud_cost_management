@@ -1,17 +1,20 @@
 view: gcp_billing_export {
   view_label: "Billing"
   derived_table: {
-    partition_keys: ["partition_date"]
-    #Previous Value: Usage Start Time - the previous value creates a partition for each usage start time - very granular and will
-    # V3 - using Partition Date and introducing Usage Start Date as Cluster Keys
+    # partition_keys: ["partition_date"]
+    partition_keys: ["usage_start_date"]
+    # { Previous Value: Usage Start Time - the previous value creates a partition for each usage start time - very granular and will
     # result in very expensive queries as the partition scheme is not very useful
-    cluster_keys: ["usage_start_date"]
+    # V3 - using Partition Date and introducing Usage Start Date as Cluster Keys
+    # V4 - using usage_start_date, but keeping partition_date as a column for increment }
+    # cluster_keys: ["partition_date"]
+    # Clustering can only be top level and not be part of the nest
     datagroup_trigger: daily_datagroup
-    #Sidney Stefani: Commented out in order to switch from Incremental PDT to PDT
+    # { Sidney Stefani: Commented out in order to switch from Incremental PDT to PDT
     # Eric Ferreria: Correcting increment key and offset to take advantage of incremental PDT
     # We know that the GCP Billing Extract can alter the records of the current partition, therefore our incremental key must be based
     # on the partitiondate, with an offset of 1 so that the build will also rebuild the previous partitioned day
-    # Documentation: https://cloud.google.com/looker/docs/incremental-pdts#example_1
+    # Documentation: https://cloud.google.com/looker/docs/incremental-pdts#example_1 }
 
     increment_key: "partition_date" # previous value: exporttime
     increment_offset: 1 #Previous Value: 0 -- This will rebuild the previous day's partitiondate that could have altered data
