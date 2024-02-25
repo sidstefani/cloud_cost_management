@@ -31,5 +31,5 @@ include: "/explores/*.explore"
 include: "/refinements/rf_gcp_billing_export.explore"
 
 
-
+include: "/dashboards/cudresource.dashboard.lookml"
 persist_with: daily_datagroup

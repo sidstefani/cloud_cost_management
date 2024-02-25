@@ -445,10 +445,10 @@ view: gcp_billing_export {
     #Sidney Stefani - updating drill fields
     measure: total_net_cost {
       type: number
-      # sql: ${total_cost} - ${gcp_billing_export__credits.total_amount};;
-      sql: ${total_cost} - ${total_credit_amount} ;;
+      sql: ${total_cost} - ${gcp_billing_export__credits.total_amount};;
+      #sql: ${total_cost} - ${total_credit_amount} ;;
       value_format: "#,##0.00"
-      html: <a href="#drillmenu" target="_self">{{ currency_symbol._value }}{{ rendered_value }}</a>;;
+      #html: <a href="#drillmenu" target="_self">{{ currency_symbol._value }}{{ rendered_value }}</a>;;
       drill_fields: [total_cost, gcp_billing_export__credits.total_amount]
     }
 
@@ -657,11 +657,9 @@ view: gcp_billing_export {
       sql: ${total_cud_cost}/NullIF(${total_cost_at_on_demand_rates},0) ;;
     }
 
-    #Rishi Ghai - String to Date
     dimension_group: invoice_month {
       label: "Invoice"
       type: time
-      #sql: ${TABLE}.invoice.month ;;
       datatype: date
       timeframes: [
         month,
@@ -742,8 +740,9 @@ view: gcp_billing_export {
     measure: total_amount {
       label: "Total Credit Amount"
       type: sum
-      value_format: "#,##0.00"
-      html: <a href="#drillmenu" target="_self">{{ gcp_billing_export.currency_symbol._value }}{{ rendered_value }}</a>;;
+      value_format_name: usd_0
+      #value_format: "#,##0.00"
+      #html: <a href="#drillmenu" target="_self">{{ gcp_billing_export.currency_symbol._value }}{{ rendered_value }}</a>;;
       sql: -1*${amount} ;;
       drill_fields: [gcp_billing_export__credits.type,gcp_billing_export__credits.total_amount]
     }
